@@ -1,4 +1,7 @@
 ﻿@page "/counter"
+@using Microsoft.Extensions.Logging;
+@using System.Diagnostics;
+@inject ILogger<Counter> logger;
 
 <h1>Counter</h1>
 
@@ -12,5 +15,9 @@
     private void IncrementCount()
     {
         currentCount++;
+        logger.LogInformation("Someone has clicked me!");
+
+        Debug.AutoFlush = true;
+        Debug.WriteLine("Someone has clicked me!");
     }
 }

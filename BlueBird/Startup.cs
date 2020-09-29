@@ -1,5 +1,6 @@
 using BlueBird.Data;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,12 @@ namespace BlueBird
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            //services.AddAuthentication(opsions =>
+            //    {
+            //        opsions.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    }
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +54,8 @@ namespace BlueBird
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
